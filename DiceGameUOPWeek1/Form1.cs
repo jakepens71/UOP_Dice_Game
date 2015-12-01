@@ -30,6 +30,8 @@ namespace DiceGameUOPWeek1
 
         private void btnRollDice_Click(object sender, EventArgs e)
         {
+            lstRollResult.Items.Clear();
+
             for (int i = 0; i < 100; i++)
             {
                 picDice1.Image = null;
@@ -53,8 +55,14 @@ namespace DiceGameUOPWeek1
                 picDice2.Image = dice2Image;
                 picDice2.Refresh();
 
-                Console.WriteLine("Random 1: " + randomNumber1 + " : Random 2: " + randomNumber2 + " on iteration: " + i);
-                System.Threading.Thread.Sleep(50);
+                if (randomNumber1 == randomNumber2)
+                {
+                    int rollIteration = i - 1;
+                    lstRollResult.Items.Add("Dice 1: " + randomNumber1.ToString() + " : Dice 2: " + randomNumber2.ToString() + " on Roll: " + rollIteration.ToString());
+
+                }
+           
+                
             }
         }
     }
